@@ -60,7 +60,12 @@
         update_cache: yes
         name:
           - docker.io
-          - docker-compose
+
+    - name: Download docker-compose
+      ansible.builtin.get_url:
+        url: https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
+        dest: /usr/local/bin/docker-compose
+        mode: u+x,g+x,o+x
   become: yes
   when: ansible_facts['os_family'] == "Astra Linux"
 
