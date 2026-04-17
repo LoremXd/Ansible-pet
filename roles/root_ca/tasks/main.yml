@@ -9,7 +9,7 @@
 - block:
   - name: Add root_ca cert file
     ansible.builtin.copy:
-      dest: /usr/share/ca-certificates/ca.crt
+      dest: /usr/local/share/ca-certificates/ca.crt
       content: "{{ root_ca['cert'] | b64decode }}"
       owner: root
       group: root
